@@ -96,4 +96,22 @@ docs/
 
 ## Installing in a Project
 
-Run `/framework` in the target project to install. The installer detects the stack and copies the appropriate files.
+```bash
+# Clone the framework
+git clone https://github.com/josehgl/claude-framework.git
+
+# Install into your project
+node claude-framework/install.js /path/to/your/project
+
+# Options
+node claude-framework/install.js /path/to/project --dry-run   # Preview
+node claude-framework/install.js /path/to/project --minimal   # .claude/ only
+node claude-framework/install.js /path/to/project --force     # Overwrite
+```
+
+The installer:
+- Detects your stack (language, framework, test runner, package manager)
+- Copies agents, skills, hooks, docs, and settings
+- Generates a project-specific CLAUDE.md with stack info
+- Creates initial state files (sprint, backlog, velocity)
+- Safe mode by default — never overwrites existing files
