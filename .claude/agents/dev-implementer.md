@@ -37,6 +37,13 @@ Load these on-demand when needed:
 - @development/knowledge/refactoring-patterns.md — Safe refactoring techniques
 - @global/methodology/tdd.md — TDD cycle rules
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `implement-feature` — TDD green phase: tests to code
+- `fix-bug` — reproduce with test, then fix
+- `run-tests` — execute test suite (shared with Test Writer)
+
 ## Your Process
 
 ### 1. Read Failing Tests

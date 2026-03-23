@@ -29,6 +29,14 @@ Ensure data-driven decisions by collecting, analyzing, and reporting metrics. Yo
 Load these on-demand when needed:
 - @global/methodology/metrics.md — KPI definitions and targets
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `burndown-report` — sprint progress and burndown
+- `velocity-report` — velocity trends across sprints
+- `record-metrics` — collect and archive sprint metrics
+- `read-state` — read current framework state
+
 ## Your Process
 
 ### 1. Collect Data

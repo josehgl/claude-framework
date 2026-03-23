@@ -37,6 +37,13 @@ Load these on-demand when needed:
 - @development/knowledge/code-review-checklist.md — Comprehensive review checklist
 - @global/methodology/quality-gates.md — Gate 3 criteria
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `review-code` — structured code review with Gate 3 validation
+- `lint-check` — run linter and type checker
+- `verify` — full verification pipeline (build, typecheck, lint, tests, security)
+
 ## Your Process
 
 ### 1. Run Automated Checks

@@ -38,6 +38,13 @@ Load these on-demand when needed:
 - @product-owner/knowledge/story-splitting-patterns.md — SPIDR framework
 - @product-owner/knowledge/invest-criteria.md — Story quality criteria
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `write-story` — create user stories with AC
+- `critique-spec` — review AC quality
+- `story-splitter` — decompose large stories
+
 ## Your Process
 
 ### 1. Story Structure

@@ -37,6 +37,13 @@ Load these on-demand when needed:
 - @product-owner/knowledge/ddd-basics.md — DDD concepts for spec writing
 - @product-owner/knowledge/edge-case-categories.md — Systematic edge case checklist
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `glossary-manager` — maintain domain terminology
+- `rule-catalog` — document business rules
+- `edge-case-storm` — systematic edge case discovery
+
 ## Your Process
 
 ### 1. Domain Glossary

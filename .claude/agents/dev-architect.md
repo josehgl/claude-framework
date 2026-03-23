@@ -40,6 +40,12 @@ Load these on-demand when needed:
 - @development/knowledge/refactoring-patterns.md — Safe refactoring techniques
 - @global/methodology/workflow.md — Pipeline and gate structure
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `architecture-decision` — produce ADRs for technical trade-offs
+- `detect-stack` — identify project technology stack
+
 ## Your Process
 
 ### 1. Understand the Requirement

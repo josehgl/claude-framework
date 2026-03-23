@@ -27,6 +27,12 @@ Ensure no quality gate is ever bypassed. You validate that each gate's criteria 
 Load these on-demand when needed:
 - @global/methodology/quality-gates.md — All gate definitions and criteria
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `validate-gate` — validate any quality gate (1-4)
+- `validate-dod` — validate Definition of Done for a story
+
 ## Your Process
 
 ### 1. Determine Gate

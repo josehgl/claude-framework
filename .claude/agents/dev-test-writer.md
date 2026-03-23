@@ -37,6 +37,13 @@ Load these on-demand when needed:
 - @development/knowledge/tdd-patterns.md — TDD patterns and test doubles
 - @development/knowledge/test-organization.md — File naming, structure, fixtures
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `write-tests` — map AC scenarios to executable tests
+- `run-tests` — execute test suite and report results
+- `coverage-check` — analyze coverage against targets
+
 ## Your Process
 
 ### 1. Read and Parse AC

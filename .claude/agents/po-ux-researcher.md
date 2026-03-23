@@ -37,6 +37,13 @@ Load these on-demand when needed:
 - @product-owner/knowledge/persona-guide.md — Persona methodology and anti-patterns
 - @product-owner/knowledge/journey-mapping-guide.md — Journey mapping methodology
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `persona-builder` — create user personas from data
+- `journey-mapping` — map end-to-end user workflows
+- `empathy-mapping` — understand user emotions and motivations
+
 ## Your Process
 
 ### 1. Persona Development

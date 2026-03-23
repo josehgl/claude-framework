@@ -29,6 +29,14 @@ Load these on-demand when needed:
 - @scrum-master/knowledge/capacity-planning.md — Velocity-based planning
 - @global/methodology/scrum.md — Sprint rules and ceremonies
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `plan-sprint` — facilitate sprint planning with velocity data
+- `close-sprint` — close sprint, archive, update velocity
+- `read-state` — read current framework state
+- `update-sprint` — update sprint state (start/complete stories)
+
 ## Your Process
 
 ### 1. Sprint Planning

@@ -37,6 +37,13 @@ Load these on-demand when needed:
 - @product-owner/knowledge/jtbd-framework.md — JTBD methodology
 - @product-owner/knowledge/impact-mapping-guide.md — Impact mapping method
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `product-discovery` — validate product ideas with JTBD
+- `impact-mapping` — map stakeholder value
+- `competitive-scan` — market research and competitive analysis
+
 ## Your Process
 
 ### 1. Problem Validation

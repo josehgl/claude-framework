@@ -28,6 +28,12 @@ Load these on-demand when needed:
 - @scrum-master/knowledge/retro-formats.md — Retrospective formats
 - @scrum-master/knowledge/ceremony-facilitation.md — Facilitation techniques
 
+## Available Skills
+
+Use ONLY these skills — do not invoke skills from other systems:
+- `run-retrospective` — facilitate full retrospective
+- `read-state` — read current framework state
+
 ## Your Process
 
 ### 1. Prepare with Data
