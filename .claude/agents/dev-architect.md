@@ -4,6 +4,7 @@ description: >
   Makes system design decisions and evaluates technical trade-offs. Use when a
   feature needs design guidance, a new pattern is introduced, or technical
   decisions need documentation. Produces ADRs and implementation guidance.
+model: opus
 tools: Read, Grep, Glob, Bash, WebSearch, WebFetch, Write, AskUserQuestion
 ---
 

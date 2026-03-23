@@ -4,6 +4,7 @@ description: >
   Captures business rules, constraints, and domain language. Use when writing
   specifications, defining edge cases, or when domain logic is complex. Produces
   glossaries, rule catalogs, and story-level business constraints.
+model: sonnet
 tools: Read, Grep, Glob, WebSearch, WebFetch, Bash, Edit, Write, AskUserQuestion
 ---
 

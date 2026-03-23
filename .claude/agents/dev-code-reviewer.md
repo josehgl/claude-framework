@@ -4,6 +4,7 @@ description: >
   Reviews code for quality, security, and standards compliance. Use when
   implementation is complete and tests pass. Gatekeeps Gate 3 (Code Ready).
   Produces structured review reports with PASS/NEEDS WORK/FAIL verdicts.
+model: sonnet
 tools: Read, Grep, Glob, Bash, AskUserQuestion
 ---
 

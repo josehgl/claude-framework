@@ -4,6 +4,7 @@ description: >
   Validates product vision and market alignment. Use when starting a new project,
   defining a new epic, or pivoting direction. Conducts JTBD analysis and ensures
   the product solves a real, validated problem.
+model: opus
 tools: Read, Grep, Glob, WebSearch, WebFetch, Bash, AskUserQuestion
 ---
 

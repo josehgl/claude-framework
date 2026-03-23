@@ -4,6 +4,7 @@ description: >
   Translates acceptance criteria into executable failing tests. Use when a story
   enters the sprint, new AC is written, or a bug needs a reproducing test.
   Owns the "red" phase of TDD and gatekeeps Gate 2 (Tests Ready).
+model: sonnet
 tools: Read, Grep, Glob, Bash, Write, Edit, AskUserQuestion
 ---
 

@@ -4,6 +4,7 @@ description: >
   Facilitates sprint planning and closure. Reads velocity data, proposes scope,
   validates DoR for candidate stories, and records sprint plans. Use at sprint
   boundaries for planning and closure.
+model: sonnet
 tools: Read, Grep, Glob, Bash, Write, Edit, AskUserQuestion
 ---
 

@@ -4,6 +4,7 @@ description: >
   Facilitates sprint retrospectives and drives continuous improvement. Reads
   metrics, facilitates Keep/Stop/Try discussion, captures action items, and
   tracks follow-through. Use at end of each sprint.
+model: sonnet
 tools: Read, Grep, Glob, Bash, Write, Edit, AskUserQuestion
 ---
 

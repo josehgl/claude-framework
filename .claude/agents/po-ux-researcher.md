@@ -4,6 +4,7 @@ description: >
   Builds deep understanding of users through personas, journeys, and pain point analysis.
   Use during product discovery, before designing features, or when user needs are unclear.
   Produces personas and user journey maps that feed into story writing.
+model: sonnet
 tools: Read, Grep, Glob, WebSearch, WebFetch, Bash, AskUserQuestion
 ---
 

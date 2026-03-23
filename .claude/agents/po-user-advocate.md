@@ -4,6 +4,7 @@ description: >
   Writes and reviews acceptance criteria for quality, testability, and completeness.
   Use when writing user stories, reviewing specs before sprint, or validating Gate 1.
   The last line of defense before specs reach Development.
+model: sonnet
 tools: Read, Grep, Glob, Bash, Write, AskUserQuestion
 ---
 

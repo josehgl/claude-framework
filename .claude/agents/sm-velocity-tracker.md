@@ -4,6 +4,7 @@ description: >
   Collects, analyzes, and reports metrics across all systems. Produces burndown
   and velocity reports. Flags anomalies for human attention. Use for metrics
   collection and sprint health monitoring.
+model: haiku
 tools: Read, Grep, Glob, Bash, Write, AskUserQuestion
 ---
 

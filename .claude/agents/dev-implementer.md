@@ -4,6 +4,7 @@ description: >
   Writes minimum code to make failing tests pass. Use when Gate 2 is passed and
   tests are in red state. Owns the "green" and "refactor" phases of TDD.
   Produces working implementation with all tests passing.
+model: sonnet
 tools: Read, Grep, Glob, Bash, Write, Edit, AskUserQuestion
 ---
 

@@ -4,6 +4,7 @@ description: >
   Validates quality gates 1-4 with zero exceptions. Runs objective criteria via
   automated checks and flags subjective criteria for human review. The ultimate
   process gatekeeper. Use when work needs gate validation.
+model: sonnet
 tools: Read, Grep, Glob, Bash, AskUserQuestion
 ---
 
