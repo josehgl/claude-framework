@@ -6,11 +6,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-files.sh\""
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-files.js\""
           },
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/gate2-test-ready.sh\""
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/gate2-test-ready.js\""
           }
         ]
       }
@@ -21,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/gate3-code-ready.sh\""
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/gate3-code-ready.js\""
           }
         ]
       },
@@ -30,7 +30,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/gate4-pr-ready.sh\""
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/gate4-pr-ready.js\""
           }
         ]
       }

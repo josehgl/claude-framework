@@ -250,20 +250,22 @@ function validateHooks() {
     return;
   }
 
-  const files = findFiles(hookDir, /\.sh$/);
+  const files = findFiles(hookDir, /\.(js|sh)$/);
 
   let valid = 0;
   for (const file of files) {
     const content = fs.readFileSync(file, "utf-8");
     let fileOk = true;
+    const isJs = file.endsWith(".js");
 
     // Check shebang
     if (!content.startsWith("#!/")) {
-      warn(file, "missing shebang (#!/bin/bash)");
+      warn(file, isJs ? "missing shebang (#!/usr/bin/env node)" : "missing shebang (#!/bin/bash)");
     }
 
     // Check not empty
-    const lines = content.split("\n").filter((l) => l.trim() && !l.startsWith("#"));
+    const commentPrefix = isJs ? "//" : "#";
+    const lines = content.split("\n").filter((l) => l.trim() && !l.startsWith(commentPrefix));
     if (lines.length < 2) {
       error(file, "hook script appears empty (< 2 non-comment lines)");
       fileOk = false;
@@ -318,9 +320,9 @@ function validateSettings() {
         if (hook.type !== "command") continue;
         refsTotal++;
 
-        // Extract script path from command
+        // Extract script path from command (.js or .sh)
         const scriptMatch = hook.command.match(
-          /hooks\/([a-z0-9-]+\.sh)/
+          /hooks\/([a-z0-9-]+\.(?:js|sh))/
         );
         if (scriptMatch) {
           const scriptPath = path.join(CLAUDE_DIR, "hooks", scriptMatch[1]);
