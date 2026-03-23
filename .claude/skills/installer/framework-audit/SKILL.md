@@ -37,7 +37,26 @@ Read `.claude/settings.json` and verify:
 | gate2-test-ready | PreToolUse | [YES/NO] |
 | gate3-code-ready | PostToolUse | [YES/NO] |
 
-### 3. Check Tool Detection
+### 3. Run Validation Pipeline
+
+Run the structural validation script:
+
+```bash
+node scripts/validate.js
+```
+
+This validates:
+- All 12 agents have valid frontmatter (name, description, model, tools) and required sections
+- All 47 skills have valid frontmatter (name, description, allowed-tools) and structure
+- All hook scripts have shebangs and are non-empty
+- settings.json is valid JSON and all hook references resolve to existing files
+- All knowledge docs have H1 titles and proper structure
+- All system CLAUDE.md files have required sections
+- Cross-references between systems are consistent
+
+If errors are found, report them to the human with specific fix instructions.
+
+### 4. Check Tool Detection
 
 ```bash
 # Test runner works
