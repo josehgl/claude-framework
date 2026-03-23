@@ -44,6 +44,11 @@ Use ONLY these skills — do not invoke skills from other systems:
 - `journey-mapping` — map end-to-end user workflows
 - `empathy-mapping` — understand user emotions and motivations
 
+**Transversal** (available to all agents):
+- `read-state` — read current sprint, stories, and framework state
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
+
 ## Your Process
 
 ### 1. Persona Development

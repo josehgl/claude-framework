@@ -37,6 +37,10 @@ Use ONLY these skills — do not invoke skills from other systems:
 - `record-metrics` — collect and archive sprint metrics
 - `read-state` — read current framework state
 
+**Transversal** (available to all agents):
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
+
 ## Your Process
 
 ### 1. Collect Data

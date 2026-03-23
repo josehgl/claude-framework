@@ -32,6 +32,11 @@ Load these on-demand when needed:
 Use ONLY these skills — do not invoke skills from other systems:
 - `validate-gate` — validate any quality gate (1-4)
 - `validate-dod` — validate Definition of Done for a story
+- `read-state` — read current framework state
+
+**Transversal** (available to all agents):
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
 
 ## Your Process
 

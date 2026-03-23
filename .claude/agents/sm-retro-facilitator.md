@@ -33,6 +33,11 @@ Load these on-demand when needed:
 Use ONLY these skills — do not invoke skills from other systems:
 - `run-retrospective` — facilitate full retrospective
 - `read-state` — read current framework state
+- `record-metrics` — collect and archive sprint metrics
+
+**Transversal** (available to all agents):
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
 
 ## Your Process
 

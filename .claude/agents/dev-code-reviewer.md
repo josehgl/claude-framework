@@ -44,6 +44,11 @@ Use ONLY these skills — do not invoke skills from other systems:
 - `lint-check` — run linter and type checker
 - `verify` — full verification pipeline (build, typecheck, lint, tests, security)
 
+**Transversal** (available to all agents):
+- `read-state` — read current sprint, stories, and framework state
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
+
 ## Your Process
 
 ### 1. Run Automated Checks

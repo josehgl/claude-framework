@@ -46,6 +46,11 @@ Use ONLY these skills — do not invoke skills from other systems:
 - `architecture-decision` — produce ADRs for technical trade-offs
 - `detect-stack` — identify project technology stack
 
+**Transversal** (available to all agents):
+- `read-state` — read current sprint, stories, and framework state
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
+
 ## Your Process
 
 ### 1. Understand the Requirement

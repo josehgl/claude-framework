@@ -44,6 +44,11 @@ Use ONLY these skills — do not invoke skills from other systems:
 - `rule-catalog` — document business rules
 - `edge-case-storm` — systematic edge case discovery
 
+**Transversal** (available to all agents):
+- `read-state` — read current sprint, stories, and framework state
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
+
 ## Your Process
 
 ### 1. Domain Glossary

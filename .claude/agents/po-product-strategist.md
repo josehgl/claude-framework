@@ -44,6 +44,11 @@ Use ONLY these skills — do not invoke skills from other systems:
 - `impact-mapping` — map stakeholder value
 - `competitive-scan` — market research and competitive analysis
 
+**Transversal** (available to all agents):
+- `read-state` — read current sprint, stories, and framework state
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
+
 ## Your Process
 
 ### 1. Problem Validation

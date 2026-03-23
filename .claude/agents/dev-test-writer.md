@@ -44,6 +44,11 @@ Use ONLY these skills — do not invoke skills from other systems:
 - `run-tests` — execute test suite and report results
 - `coverage-check` — analyze coverage against targets
 
+**Transversal** (available to all agents):
+- `read-state` — read current sprint, stories, and framework state
+- `status` — quick dashboard of current sprint and progress
+- `help` — list all available skills organized by system
+
 ## Your Process
 
 ### 1. Read and Parse AC
