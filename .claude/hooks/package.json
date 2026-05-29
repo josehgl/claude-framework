@@ -1,0 +1,4 @@
+{
+  "//": "Scopes every .js hook in this directory to CommonJS, regardless of the project root's module type. The framework hooks use require()/module.exports; without this, an ESM project (root \"type\": \"module\") would make Node load them as ES modules and crash with 'require is not defined'.",
+  "type": "commonjs"
+}
