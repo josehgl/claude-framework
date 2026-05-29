@@ -6,6 +6,9 @@ description: >
   too many concerns, or can't fit in a sprint.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/user-stories.md"
+    reason: "Cannot split stories that don't exist yet (run write-story first)"
 ---
 
 # Story Splitter

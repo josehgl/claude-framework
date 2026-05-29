@@ -1,5 +1,21 @@
 # Git Flow: Trunk-Based + GitHub Flow
 
+## Step 0 — Initialize the Repository (always first)
+
+Before any stories, tests, or code, **every project must be under version
+control and synced to GitHub**. This is the first action on any new project.
+
+Run the `init-repo` skill (`/init-repo`), which:
+
+1. `git init -b main` + a sensible `.gitignore`
+2. an initial `chore: bootstrap` commit
+3. creates a **private** GitHub repo via `gh` and pushes `main` (wires `origin`)
+
+It is idempotent: if the repo/remote already exist it does nothing. CI and
+branch protection come later via `github-setup`.
+
+---
+
 ## Strategy: Trunk-Based Development
 
 `main` is always deployable. All work branches from main and merges back to main quickly.

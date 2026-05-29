@@ -6,6 +6,11 @@ description: >
   the happy path misses. Use when writing or reviewing AC.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/epic-brief.md"
+    reason: "Edge cases must relate to the defined product scope"
+  - artifact: "docs/product-owner/discovery/personas.md"
+    reason: "User context informs edge case relevance"
 ---
 
 # Edge Case Storm

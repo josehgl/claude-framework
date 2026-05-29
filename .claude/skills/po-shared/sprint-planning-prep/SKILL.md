@@ -6,6 +6,9 @@ description: >
   planning ceremonies.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/user-stories.md"
+    reason: "Cannot plan a sprint without stories (run write-story first)"
 ---
 
 # Sprint Planning Prep

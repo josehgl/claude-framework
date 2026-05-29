@@ -6,15 +6,27 @@ description: >
   Use after writing stories or during sprint planning.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, Bash, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/user-stories.md"
+    reason: "Stories must exist before creating issues (run write-story first)"
+  - artifact: "docs/product-owner/discovery/gate1-validation.md"
+    reason: "Stories must pass Gate 1 before becoming issues (run critique-spec first)"
 ---
 
 # Create GitHub Issues from Stories
 
 Convert framework stories into properly labeled GitHub Issues.
 
+## Critical Rule
+
+**ALL stories in the stories file must become GitHub Issues — not just the current sprint.**
+Backlog stories, future sprint stories, and current sprint stories all get issues.
+After creation, verify: count of issues created == count of stories in the file.
+If there is a mismatch, report it and create the missing issues.
+
 ## Inputs
 
-- Story file(s) or story text to convert
+- Story file(s) or story text to convert — default: `docs/product-owner/discovery/user-stories.md`
 - Target sprint/milestone (optional)
 - GitHub repo (detect from git remote or ask)
 

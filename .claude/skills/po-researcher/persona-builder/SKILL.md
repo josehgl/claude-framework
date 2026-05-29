@@ -6,6 +6,9 @@ description: >
   before designing features, or when user context is missing from stories.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, WebSearch, WebFetch, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/epic-brief.md"
+    reason: "Personas must be derived from the Epic Brief (run product-discovery first)"
 ---
 
 # Persona Builder

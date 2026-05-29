@@ -83,6 +83,131 @@ function copyRecursive(src, dest, options) {
   }
 }
 
+// ------------------------------------------------------------
+// Skill flattening + prefixing
+//
+// Claude Code discovers skills ONE level deep only
+// (.claude/skills/<name>/SKILL.md). The framework source organizes
+// skills two levels deep (.claude/skills/<category>/<name>/SKILL.md),
+// which makes them invisible. We also prefix every skill with `fw-`
+// so they don't collide with each other or with Claude Code built-ins
+// (notably `status` and `help`, which are shadowed by the UI otherwise).
+//
+// After copying, this:
+//   1. Moves every skill dir to .claude/skills/fw-<name>/
+//   2. Removes the now-empty category dirs
+//   3. Rewrites each SKILL.md `name:` to `fw-<name>`
+//   4. Rewrites /command cross-references in all copied .md files
+// It is idempotent: re-running on an already-flattened tree is a no-op.
+// ------------------------------------------------------------
+
+function findSkillDirs(root) {
+  // Every directory that directly contains a SKILL.md is a skill.
+  const result = [];
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const full = path.join(dir, entry.name);
+      if (fs.existsSync(path.join(full, "SKILL.md"))) {
+        result.push(full);
+      } else {
+        walk(full);
+      }
+    }
+  }
+  walk(root);
+  return result;
+}
+
+function removeIfEmptyRecursive(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.isDirectory()) removeIfEmptyRecursive(path.join(dir, entry.name));
+  }
+  if (fs.readdirSync(dir).length === 0) fs.rmdirSync(dir);
+}
+
+function findFilesByExt(root, ext) {
+  const result = [];
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith(ext)) result.push(full);
+    }
+  }
+  if (fs.existsSync(root)) walk(root);
+  return result;
+}
+
+function flattenAndPrefixSkills(targetDir) {
+  const skillsRoot = path.join(targetDir, ".claude", "skills");
+  if (!fs.existsSync(skillsRoot)) return { names: [], moved: 0 };
+
+  const names = [];
+  let moved = 0;
+
+  for (const dir of findSkillDirs(skillsRoot)) {
+    const baseName = path.basename(dir).replace(/^fw-/, "");
+    names.push(baseName);
+    const target = path.join(skillsRoot, "fw-" + baseName);
+    if (path.resolve(dir) !== path.resolve(target)) {
+      if (fs.existsSync(target)) fs.rmSync(target, { recursive: true, force: true });
+      fs.renameSync(dir, target);
+      moved++;
+    }
+  }
+
+  // Remove leftover (now-empty) category directories.
+  for (const entry of fs.readdirSync(skillsRoot, { withFileTypes: true })) {
+    if (entry.isDirectory() && !entry.name.startsWith("fw-")) {
+      removeIfEmptyRecursive(path.join(skillsRoot, entry.name));
+    }
+  }
+
+  // Rewrite each skill's `name:` frontmatter to its prefixed form.
+  for (const baseName of names) {
+    const skillFile = path.join(skillsRoot, "fw-" + baseName, "SKILL.md");
+    if (!fs.existsSync(skillFile)) continue;
+    let content = fs.readFileSync(skillFile, "utf8");
+    const next = content.replace(/^name:[ \t]*.*$/m, "name: fw-" + baseName);
+    if (next !== content) fs.writeFileSync(skillFile, next);
+  }
+
+  return { names: [...new Set(names)], moved };
+}
+
+function updateCommandRefs(targetDir, names) {
+  // Rewrite `/<skill>` references to `/fw-<skill>` in copied markdown,
+  // skipping ones already prefixed and avoiding path-like matches
+  // (e.g. `docs/global/...`). Sort longest-first for clarity; the
+  // trailing lookahead already prevents partial-name matches.
+  if (names.length === 0) return 0;
+  const sorted = [...new Set(names)].sort((a, b) => b.length - a.length);
+  const escaped = sorted.map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const re = new RegExp(
+    "(?<![\\w./-])/(?!fw-)(" + escaped.join("|") + ")(?![\\w-])",
+    "g"
+  );
+
+  const roots = [
+    path.join(targetDir, ".claude", "skills"),
+    path.join(targetDir, "docs"),
+  ];
+  let updated = 0;
+  for (const root of roots) {
+    for (const file of findFilesByExt(root, ".md")) {
+      const content = fs.readFileSync(file, "utf8");
+      const next = content.replace(re, "/fw-$1");
+      if (next !== content) {
+        fs.writeFileSync(file, next);
+        updated++;
+      }
+    }
+  }
+  return updated;
+}
+
 function detectStack(targetDir) {
   const stack = {
     language: "unknown",
@@ -198,13 +323,13 @@ Every feature follows: **Spec → Test → Code → PR → Merge**
 
 | Need | Command |
 |------|---------|
-| See current status | \`/status\` |
-| List all skills | \`/help\` |
-| Start a new sprint | \`/plan-sprint\` |
-| Write a user story | \`/write-story\` |
-| Write tests from AC | \`/write-tests\` |
-| Implement a feature | \`/implement-feature\` |
-| Create a PR | \`/create-pr\` |
+| See current status | \`/fw-status\` |
+| List all skills | \`/fw-help\` |
+| Start a new sprint | \`/fw-plan-sprint\` |
+| Write a user story | \`/fw-write-story\` |
+| Write tests from AC | \`/fw-write-tests\` |
+| Implement a feature | \`/fw-implement-feature\` |
+| Create a PR | \`/fw-create-pr\` |
 
 ### Stack
 
@@ -377,6 +502,23 @@ Examples:
     }
   }
 
+  // Flatten + prefix skills so Claude Code can discover them
+  console.log("\n--- Skills (flatten + fw- prefix) ---\n");
+  if (dryRun) {
+    const srcCount = findSkillDirs(
+      path.join(FRAMEWORK_ROOT, ".claude", "skills")
+    ).length;
+    console.log(
+      `  Would flatten + prefix ${srcCount} skills to .claude/skills/fw-<name>/`
+    );
+    console.log("  Would rewrite /command cross-references to /fw-*");
+  } else {
+    const { names, moved } = flattenAndPrefixSkills(targetDir);
+    const refs = updateCommandRefs(targetDir, names);
+    console.log(`  Flattened + prefixed ${moved} skills (${names.length} total)`);
+    console.log(`  Updated /command references in ${refs} markdown files`);
+  }
+
   // Init state files
   console.log("\n--- State files ---\n");
   if (dryRun) {
@@ -410,10 +552,10 @@ Examples:
 
     console.log(`\n  ✓ Framework installed in ${targetDir}`);
     console.log("\n  Next steps:");
-    console.log("    1. Open Claude Code in your project");
-    console.log("    2. Run /status to verify the framework is loaded");
-    console.log("    3. Run /plan-sprint to start your first sprint");
-    console.log("    4. Run /write-story to create your first user story");
+    console.log("    1. Open Claude Code in your project (full restart to load skills)");
+    console.log("    2. Run /fw-status to verify the framework is loaded");
+    console.log("    3. Run /fw-plan-sprint to start your first sprint");
+    console.log("    4. Run /fw-write-story to create your first user story");
   }
 }
 

@@ -126,3 +126,37 @@ For each changed file, check against @development/knowledge/code-review-checklis
 - NEEDS WORK → Implementer addresses critical + improvement issues
 - FAIL → route to Architect for redesign
 ```
+
+### 6. Mark Review Result
+
+After producing the review report:
+
+**If PASS:**
+```bash
+node .claude/hooks/mark-review-passed.js PASS
+```
+This creates a marker file that unblocks `git commit` for 30 minutes.
+
+**If NEEDS WORK or FAIL:**
+```bash
+node .claude/hooks/mark-review-passed.js FAIL
+```
+This ensures commits remain blocked until issues are fixed and review passes.
+
+### 7. Create GitHub Issues for Findings
+
+If the verdict is NEEDS WORK or FAIL, write findings to `.claude/.code-review-findings.json` (one JSON object per line):
+
+```json
+{"title": "Brief issue title", "severity": "critical", "file": "src/lib/foo.ts:42", "description": "What's wrong", "suggestion": "How to fix it"}
+{"title": "Another issue", "severity": "improvement", "file": "src/lib/bar.ts:10", "description": "What's wrong", "suggestion": "How to fix it"}
+```
+
+Severity values: `critical`, `improvement`, `nitpick` (nitpicks are skipped).
+
+Then run:
+```bash
+bash scripts/create-review-issues.sh
+```
+
+This auto-creates GitHub issues with labels (`bug`, `tech-debt`, `code-review`) so findings are tracked and don't get lost between conversations.

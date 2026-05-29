@@ -6,6 +6,11 @@ description: >
   Use when domain logic is complex or implicit rules need to be made explicit.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion, Edit, Write
+requires:
+  - artifact: "docs/product-owner/discovery/epic-brief.md"
+    reason: "Business rules must be grounded in the Epic Brief"
+  - artifact: "docs/product-owner/discovery/personas.md"
+    reason: "User context informs which business rules are relevant"
 ---
 
 # Rule Catalog

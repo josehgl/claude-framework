@@ -6,6 +6,11 @@ description: >
   or when understanding the current user experience.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/epic-brief.md"
+    reason: "Journey must be grounded in the Epic Brief"
+  - artifact: "docs/product-owner/discovery/personas.md"
+    reason: "Journey maps a specific persona's experience (run persona-builder first)"
 ---
 
 # Journey Mapping

@@ -6,6 +6,17 @@ description: >
   edge cases) and produces a sprint-ready story. Use when creating new stories.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion, Write
+requires:
+  - artifact: "docs/product-owner/discovery/epic-brief.md"
+    reason: "Stories must trace to an Epic Brief"
+  - artifact: "docs/product-owner/discovery/personas.md"
+    reason: "Stories are written for a specific persona"
+  - artifact: "docs/product-owner/discovery/user-journey.md"
+    reason: "Stories must fit within the mapped user journey"
+  - artifact: "docs/glossary.md"
+    reason: "Domain terms must be defined before writing AC (run glossary-manager first)"
+  - artifact: "docs/business-rules.md"
+    reason: "Business rules must be catalogued before writing AC (run rule-catalog first)"
 ---
 
 # Write Story

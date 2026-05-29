@@ -21,6 +21,14 @@ Install the Claude Development Framework on a project.
 
 ## Process: Full Installation
 
+### 0. Initialize Git + GitHub Repository (always first)
+
+**Before any other step**, ensure the project is under version control and
+synced to GitHub. Run the `init-repo` skill (`/init-repo`): `git init -b main`,
+a sensible `.gitignore`, an initial `chore: bootstrap` commit, then
+`gh repo create --private --source=. --remote=origin --push`. Idempotent — a
+no-op if a GitHub `origin` already exists. See @global/methodology/git-flow.md (Step 0).
+
 ### 1. Check Existing Installation
 
 Look for `docs/framework/config.md`:
@@ -83,7 +91,17 @@ Run the init-state skill process:
 - Create `docs/framework/` directory
 - Write config.md, backlog.md, sprint-current.md, velocity.md
 
-### 6. Verify Installation
+### 6. GitHub CI/CD Setup
+
+If the project has a GitHub remote, run the `github-setup` skill process:
+- Create `.github/workflows/ci.yml` (tests, lint, typecheck on every PR)
+- Set up branch protection on main (requires PR + CI passing)
+- Create code review labels (code-review, tech-debt, priority:high)
+- Copy review issue scripts to `scripts/`
+
+This ensures code quality enforcement at the GitHub level, complementing the local hooks.
+
+### 7. Verify Installation
 
 Run a quick health check:
 - [ ] `.claude/settings.json` has hooks configured
@@ -101,10 +119,11 @@ Run a quick health check:
 ### Stack: [language] + [framework]
 
 ### Configured
-- [x] Hooks: protect-files, gate2-test-ready, gate3-code-ready
+- [x] Hooks: protect-files, gate2-test-ready, gate3-code-ready, pre-commit-gate
 - [x] State: docs/framework/ initialized
 - [x] Sprint 0: Setup sprint created
 - [x] CLAUDE.md: Framework imports added
+- [x] GitHub: CI workflow, branch protection, review issue automation
 
 ### Commands Detected
 - Test: `[command]`

@@ -5,6 +5,11 @@ description: >
   validates DoR, and records the sprint plan. Use at the start of each sprint.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, Bash, Write, Edit, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/user-stories.md"
+    reason: "Cannot plan a sprint without stories"
+  - artifact: "docs/product-owner/discovery/gate1-validation.md"
+    reason: "Stories must pass Gate 1 before entering a sprint"
 ---
 
 # Plan Sprint

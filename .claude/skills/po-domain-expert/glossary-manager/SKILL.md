@@ -6,6 +6,11 @@ description: >
   onboarding to a new domain, or when ambiguous terms are found in stories.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion, Edit, Write
+requires:
+  - artifact: "docs/product-owner/discovery/epic-brief.md"
+    reason: "Glossary terms must be grounded in the Epic Brief"
+  - artifact: "docs/product-owner/discovery/personas.md"
+    reason: "Personas provide user context for domain terminology"
 ---
 
 # Glossary Manager

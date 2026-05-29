@@ -6,6 +6,9 @@ description: >
   journey map is overkill, or to enrich an existing persona.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/personas.md"
+    reason: "Empathy mapping requires an existing persona (run persona-builder first)"
 ---
 
 # Empathy Mapping

@@ -13,6 +13,24 @@
             "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/gate2-test-ready.js\""
           }
         ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/skill-prerequisites.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/pre-commit-gate.js\""
+          }
+        ]
       }
     ],
     "PostToolUse": [

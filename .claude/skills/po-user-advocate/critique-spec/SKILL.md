@@ -6,6 +6,11 @@ description: >
   reviewing existing stories or validating Gate 1 readiness.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, AskUserQuestion
+requires:
+  - artifact: "docs/product-owner/discovery/user-stories.md"
+    reason: "Cannot critique specs that don't exist yet (run write-story first)"
+  - artifact: "docs/glossary.md"
+    reason: "Spec review checks glossary compliance"
 ---
 
 # Critique Spec
